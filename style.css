@@ -1,0 +1,547 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #808ea0;
+    /* background-color: #aebccf; */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    text-align: center;
+    /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); */
+}
+
+.container h1 {
+    font-family: "Russo One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    display: flex;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.container h1 span {
+    color: #f84646;
+}
+
+
+/* Seleccion de Jugadores */
+
+#player-selection {
+    width: 100%;
+}
+
+#player-selection img {
+    width: 500px;
+    border-radius: 8px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#player-selection .jugadores {
+    margin: 0 auto;
+    width: 20%;
+}
+
+#player-selection .jugadores li {
+    background-color: #f8f9fa;
+    border: 1px solid #6f7a8a;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    /* font-weight: bold; */
+    /* color: #007bff; */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+#player-selection #country-select {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 50%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #fdfdfd;
+    transition: 0.3s ease;
+}
+
+#player-selection #country-select:hover {
+    transform: scale(1.02);
+}
+
+
+#player-selection #add-player,
+#start-game {
+    padding: 12px 24px;
+    margin: 10px;
+    background-color: #ee4343;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+
+#player-selection #add-player:hover,
+#start-game:hover {
+    background-color: #da0101;
+    transform: scale(1.01);
+}
+
+
+#player-selection .instrucciones #openInstructions {
+    position: relative;
+    display: flex;
+    padding: 7px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bolder;
+    background-color: #fffd76;
+}
+
+#player-selection .instrucciones #openInstructions:hover {
+    background-color: #fffb00;
+}
+
+#player-selection .instrucciones dialog {
+    position: absolute;
+    top: 100px;
+    width: 30%;
+    border: none;
+    border-radius: 15px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#player-selection .instrucciones dialog h3 {
+    color: black;
+}
+
+#player-selection .instrucciones dialog p {
+    line-height: 25px;
+}
+
+
+#player-selection .instrucciones dialog button {
+    padding: 7px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bolder;
+    background-color: #fffb00;
+}
+
+
+/* Tablero Principal */
+.board {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
+    grid-template-rows: 0.3fr 1fr;
+    gap: 20px;
+}
+
+
+/* Puntos de jugadores y aparicion de jugadores en el mapa */
+.mapa {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: auto;
+}
+
+.mapa img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+
+#game-info {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #77839c;
+    border-radius: 12px;
+    grid-column: 1;
+    grid-row: 2;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#game-info h3 {
+    color: #ffffff;
+
+}
+
+#player-scores {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #333;
+
+}
+
+#player-scores li {
+    list-style-type: none;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 3px solid #000;
+}
+
+.player {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #3f3f3f;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.playersDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: 2;
+    height: 100%;
+    gap: 20px;
+}
+
+.playersDisplay .fight {
+    display: flex;
+    flex-direction: row;
+}
+
+.playersDisplay .atacante,
+.atacado {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    gap: 10px;
+
+}
+
+.playersDisplay .atacante img,
+.atacado img {
+    width: 100px;
+    height: auto;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+
+.playersDisplay #steps-estimation {
+    background-color: #e7e7f0;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 15px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.playersDisplay #steps-estimation input {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 50%;
+    height: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    background-color: #fff;
+    transition: 0.3s ease;
+    border: none;
+}
+
+.playersDisplay #steps-estimation button {
+    padding: 12px 24px;
+    margin: 10px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.playersDisplay #steps-estimation button:hover {
+    transform: scale(1.02);
+} 
+
+.playersDisplay #result {
+    background-color: #e7e7f0;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 15px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.playersDisplay #result button {
+    padding: 12px 24px;
+    margin: 10px;
+    background-color: #e73939;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.playersDisplay #result button:hover {
+    transform: scale(1.02);
+}
+
+
+/* Declaracion de guerra */
+
+#war-declaration {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+
+#jugador-actual {
+    color: #000;
+    grid-column: 1;
+    grid-row: span 2
+}
+
+#current-player {
+    color: white;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.title h2 {
+    margin: 0;
+}
+
+.title img {
+    width: 50px;
+    height: auto;
+}
+
+#war-declaration select {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 50%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    transition: 0.3s ease;
+    background-color: #fdfdfd;
+}
+
+
+#war-declaration select:hover {
+    background-color: #e9ecef;
+    cursor: pointer;
+    transform: scale(1.03);
+
+}
+
+#war-declaration button {
+    padding: 12px 10%;
+    margin: 10px;
+    background-color: #e73939;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#war-declaration button:hover {
+    transform: scale(1.02);
+}
+
+
+/* Clases globales */
+
+
+.hidden {
+    display: none;
+}
+
+#players {
+    margin-bottom: 10px;
+}
+
+/* Mapa del tablero principal */
+
+#map {
+    grid-column: 2;
+    grid-row: 2;
+    position: relative;
+    width: 800px;
+    height: 600px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    border-radius: 15;
+    box-shadow: 0 10px 30px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#center {
+    position: absolute;
+    top: 53.3%;
+    left: 52.5%;
+    width: 50px;
+    height: 50px;
+    background-color: #ff6f61;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#map button {
+    padding: 12px 24px;
+    margin: 10px;
+    background-color: #3677da;
+    color: #ffffff;
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+#map button:hover {
+    transform: scale(1.02);
+}
+
+#open-modal {
+    display: none;
+}
+
+#map dialog {
+    position: absolute;
+    top: 300px;
+    left: 300px;
+    width: 30%;
+    border: none;
+    border-radius: 15px;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+#modal select {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 50%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    background-color: #fff;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+#modal select:hover {
+    background-color: #e9ecef;
+    transform: scale(1.02);
+}
+
+/* Reiniciar juego */
+
+#game-over h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 40px;  
+    animation: fadeIn 0.3s ease-in-out;  
+}
+
+#game-over p {
+    font-size: 30px;
+    font-weight: bolder;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+
+#game-over button {
+    padding: 12px 24px;
+    margin: 10px;
+    background-color: #e73939;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#game-over button:hover {
+    transform: scale(1.02);
+}
+
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.target1 {
+    background-color: red;
+    z-index: 2;
+}
+
+.target2 {
+    background-color: yellow;
+    color: black;
+    z-index: 1;
+}

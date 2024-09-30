@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/tanque.png">
+    <title>GeoStop</title>
+</head>
+
+<body>
+
+    <div class="container" id="container">
+        <h1>GEO<span>STOP</span></h1>
+
+        <section id="player-selection">
+            <img src="img/soldados.jpeg" alt="imagen de soldados">
+            <h2>Selección de Jugadores:</h2>
+
+            <div class="jugadores">
+                <ol id="players"></ol>
+            </div>
+
+            <select id="country-select">
+                <option value="España">España</option>
+                <option value="Francia">Francia</option>
+                <option value="Canada">Canada</option>
+                <option value="Colombia">Colombia</option>
+                <option value="China">China</option>
+                <option value="Australia">Australia</option>
+                <option value="Venezuela">Venezuela</option>
+                <option value="Alemania">Alemania</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Japon">Japon</option>
+            </select>
+
+            <button id="add-player">Añadir Jugador</button>
+            <button id="start-game">Iniciar Juego</button>
+
+
+            <div class="instrucciones">
+                <button id="openInstructions">Instrucciones</button>
+                <dialog id="modalInstructions">
+                    <h3>GEOSTOP</h3>
+                    <h4>Juego de estrategia y precisión</h4>
+                    <p>1. Añada los jugadores que desee con el boton "Añadir jugador". Recuerde que la cantidad minima
+                        de jugadores es de <strong>tres</strong></p>
+                    <p>2. Inicie el juego cuando todos los jugadores esten preparados.</p>
+                    <p>3. Al iniciar el juego, empieza declarando la guerra el primer jugador de la lista.</p>
+                    <p>4. Al declarar la guerra, todos los jugadores se alejarán del centro menos el jugador al que se
+                        le declaró la guerra</p>
+                    <p>5. Este tendrá un boton donde deberá elegir un jugador a conveniencia al cual eliminar o quitarle
+                        un punto</p>
+                    <p>6. Una vez elegido, intentará acertar la cantidad de pasos que existen entre él y su objetivo</p>
+                    <p>7. Si la cantidad de pasos es correcta, el jugador objetivo pierde un punto o es eliminado, de lo
+                        contrario el que pierde el punto es el jugador atacante</p>
+                    <p>8. Deben seguir esta secuencia hasta que quede un jugador con la mayor cantidad de
+                        <strong>puntos</strong></p>
+                    <button id="closeInstructions">Entendido!</button>
+                </dialog>
+            </div>
+
+        </section>
+
+
+
+
+        <section id="game-board" class="hidden">
+
+            <div class="board">
+
+                <div class="mapa">
+                    <img src="img/soldaditos2.jpeg" alt="imagen de soldados desafiantes">
+                </div>
+
+                <div id="game-info">
+                    <h3>Jugadores:</h3>
+                    <div id="player-scores"></div>
+                </div>
+
+                <div class="playersDisplay">
+                    <div class="fight">
+
+                        <div class="atacante">
+                            <img id="bandera-atacante" src="" alt="Bandera-Atacante">
+                            <h2 id="pais-atacante"></h2>
+                        </div>
+                        <div class="atacado">
+                            <img id="bandera-atacado" src="" alt="Bandera-Atacada">
+                            <h2 id="pais-atacado"></h2>
+                        </div>
+
+                    </div>
+
+                    <div id="steps-estimation" class="hidden">
+                        <h2>Estima la Cantidad de Pasos</h2>
+                        <input type="number" id="step-count" min="1">
+                        <button id="confirm-steps">Confirmar Pasos</button>
+                    </div>
+
+                    <div id="result" class="hidden">
+                        <h2>Resultado</h2>
+                        <p id="result-message"></p>
+                        <button id="next-round">¡Siguiente Ronda!</button>
+                    </div>
+
+                </div>
+
+
+                <div id="war-declaration" class="hidden">
+                    <h2 id="jugador-actual">Jugador Actual: <span id="current-player">-</span></h2>
+                    <div class="war">
+
+                        <div class="title">
+
+                            <h2>Declara la guerra a algún país</h2>
+                            <img id="guerra" src="img/guerra.png" alt="planeta guerra">
+                        </div>
+                        <select id="target-player"></select>
+                        <button id="confirm-target">Guerra!</button>
+                    </div>
+
+                </div>
+
+
+
+                <div id="map">
+
+                    <div id="center"></div>
+                    <div id="player-icons" class="target1" class="target2" >
+                        <!-- Jugadores se mostrarán aquí -->
+                    </div>
+
+                    <button id="open-modal">Elegir jugador</button>
+
+                    <dialog id="modal">
+                        <h2>Elige un Jugador para eliminar</h2>
+                        <select id="quitar-punto">
+                            <!-- Opciones de jugadores -->
+                        </select>
+
+                        <button id="confirm-rewar">Confirmar</button>
+                    </dialog>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+        <section id="game-over" class="hidden">
+            <h2>Juego Terminado</h2>
+            <img id="banderaGanador" src="" alt="Bandera del jugador ganador">
+            <p id="winner-message"></p>
+            <button id="restart-game">Reiniciar Juego</button>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
