@@ -30,19 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const countrySelect = document.getElementById('country-select');
     const gameBoard = document.getElementById('game-board');
     const gameOver = document.getElementById('game-over');
-    const addPlayerButton = document.getElementById('add-player');
+    const añadirJugadorButton = document.getElementById('add-player');
     const startGameButton = document.getElementById('start-game');
     const playerList = document.getElementById('players');
     const playerScoresList = document.getElementById('player-scores');
 
     // Modales y confirmaciones
-    const confirmTargetModal = document.getElementById('confirm-rewar')
+    const confirmarJugadorModal = document.getElementById('confirm-rewar')
     const warDeclaration = document.getElementById('war-declaration');
 
     const banderaGanador = document.getElementById('banderaGanador')
     const quitarPuntoSelect = document.getElementById('quitar-punto');
     const targetPlayerSelect = document.getElementById('target-player');
-    const confirmTargetButton = document.getElementById('confirm-target');
+    const confirmarJugadorButton = document.getElementById('confirm-target');
     const stepsEstimation = document.getElementById('steps-estimation');
     const stepCountInput = document.getElementById('step-count');
     const confirmStepsButton = document.getElementById('confirm-steps');
@@ -56,12 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const playerIcons = document.getElementById('player-icons');
 
     // Lista de eventos
-    addPlayerButton.addEventListener('click', addPlayer);
+    añadirJugadorButton.addEventListener('click', añadirJugador);
     startGameButton.addEventListener('click', startGame);
 
-    confirmTargetModal.addEventListener('click', confirmTargetmodal);
+    confirmarJugadorModal.addEventListener('click', confirmarJugadormodal);
 
-    confirmTargetButton.addEventListener('click', confirmTarget);
+    confirmarJugadorButton.addEventListener('click', confirmarJugador);
     confirmStepsButton.addEventListener('click', confirmSteps);
     nextRoundButton.addEventListener('click', nextRound);
     restartGameButton.addEventListener('click', restartGame);
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let totalCountries = countrySelect.options.length
 
-    function addPlayer() {
+    function añadirJugador() {
         const selectedCountry = countrySelect.value;
 
         players.push(selectedCountry);
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPlayerIndex = 0;
         currentPlayerDisplay.textContent = players[currentPlayerIndex];
 
-        declareWar();
+        declararGuerra();
     }
 
     // -----------------------------------------------------
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicio del juego
 
-    function declareWar() {
+    function declararGuerra() {
         warActive = true;
         warDeclaration.classList.remove('hidden');
         updateTargetPlayerOptions();
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    function confirmTarget() {
+    function confirmarJugador() {
         targetPlayer = targetPlayerSelect.value;
         paisAtacante.innerHTML = `Pais Atacante: ${targetPlayer}`;
 
@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    function confirmTargetmodal() {
+    function confirmarJugadormodal() {
         targetPlayer = quitarPuntoSelect.value;
         paisAtacado.innerHTML = `Pais Atacado: ${targetPlayer}`;
 
@@ -403,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initializePlayersOnMap();
         updateTargetPlayerOptions();
         updateModalPlayerOptions();
-        declareWar();
+        declararGuerra();
     }
 
     // ------------------------------------------------
