@@ -331,10 +331,10 @@ function movePlayers(steps) {
             let resultText = `Intentaste eliminar a ${targetPlayerModal} con ${steps} pasos. `;
             if (steps > pasosReales) {
                 playerScores[targetPlayer]--;
-                resultText += `Te pasaste. Necesitabas ${pasosReales} pasos. Pierdes un punto por pasarte.`;
+                resultText += `Necesitabas ${pasosReales} pasos. Pierdes un punto.`;
             } else if (steps === pasosReales) {
                 playerScores[targetPlayerModal]--;
-                resultText += `¡Éxito! Usaste exactamente los pasos necesarios. ${targetPlayerModal} pierde un punto.`;
+                resultText += `¡Éxito! ${targetPlayerModal} pierde un punto.`;
             } else {
                 playerScores[targetPlayer]--;
                 resultText += `Fallo. No llegaste al objetivo. Necesitabas ${pasosReales} pasos. Pierdes un punto.`;
